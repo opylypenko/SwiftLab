@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var viewModel = FeedViewModel()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            FeedView(viewModel: viewModel)
+            .navigationTitle("Swift Lab")
         }
-        .padding()
+        .fullScreenCover(item: $viewModel.selectedStory) { story in
+            StoryDetailView(viewModel: viewModel, initialIndex: viewModel.selectedStoryIndex ?? 0) {
+                viewModel.selectedStory = nil
+            }
+        }
     }
-}
-
-#Preview {
-    ContentView()
 }
