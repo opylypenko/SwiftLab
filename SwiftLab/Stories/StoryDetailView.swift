@@ -41,6 +41,18 @@ struct StoryDetailView: View {
                             ProgressView()
                         }
                         
+                        Button(action: {
+                            let story = viewModel.stories[currentIndex]
+                            viewModel.toggleLike(for: story)
+                        }) {
+                            Image(systemName: viewModel.stories[currentIndex].isLiked ? "heart.fill" : "heart")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.red)
+                                .padding()
+                        }
+                        .buttonStyle(PlainButtonStyle())
+                        
                         Button("Close") {
                             onClose()
                         }

@@ -16,6 +16,7 @@ struct Story: Identifiable, Codable, Hashable, Equatable {
     }
     
     var isRead: Bool = false
+    var isLiked: Bool = false
     
     var thumbnailURL: String {
         "https://picsum.photos/id/\(id)/100/100"

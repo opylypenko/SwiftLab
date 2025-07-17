@@ -75,4 +75,9 @@ class FeedViewModel: ObservableObject {
         guard let index = stories.firstIndex(of: story) else { return }
         stories[index].isRead = true
     }
+    
+    func toggleLike(for story: Story) {
+        guard let index = stories.firstIndex(of: story) else { return }
+        stories[index].isLiked.toggle()
+    }
 }
